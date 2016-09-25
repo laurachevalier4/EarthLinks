@@ -1,0 +1,79 @@
+ARNe.g.:arn:aws:kms:<region>:<accountID>:key/<key-id>
+	arn:aws:rds:us-west-2:359672324465:db:databaseinstance
+EngineName of the database engine to be used for this instance.
+	MySQL 5.6.27 
+License ModelLicense model information for this DB instance.
+	General Public License
+Created TimeDate and time the DB Instance was created.
+	September 24, 2016 at 9:44:05 PM UTC-4
+DB NameThe definition of the term Database Name depends on the database engine in use. For the MySQL database engine, the Database Name is the name of a database hosted in your Amazon DB Instance. An Amazon DB Instance can host multiple databases. Databases hosted by the same DB Instance must have a unique name within that instance. For the Oracle database engine, Database Name is used to set the value of ORACLE_SID, which must be supplied when connecting to the Oracle RDS instance.
+	Earthlinks
+UsernameName of master user for your DB Instance.
+	arregoitiaj1
+Option GroupAn Option Group that contains a list of configured Options (e.g. Oracle Enterprise Manager) that are attached to this DB Instance.
+	
+default:mysql-5-6 ( in-sync )
+Parameter GroupDatabase parameter group to associate with this DB instance.
+	
+default.mysql5.6 ( in-sync )
+Copy Tags To SnapshotsIf set to "Yes", all DB snapshots created from this DB instance will have the same tags as the instance.
+	No
+Resource IDAlternate ID for the encrypted instance to match KMS audit logs
+	db-7JXJ464PHCWMDIAHZXQEQKKMEA
+Security and Network
+Availability ZoneThe EC2 Availability Zone
+	us-west-2a
+VPCThe Identifier of the VPC in which you want to create your DB Instance
+	
+vpc-a14054c5
+Subnet GroupOnly DB Subnet Groups with at least one subnet in every Availability Zone of the Region are allowed
+	default ( Complete )
+SubnetsVPC Subnets in DB Subnet Group
+	
+subnet-27f67d7f
+subnet-92a995f6
+subnet-07aff871
+Security GroupsList of VPC Security Groups associated with this DB Instance.
+	
+rds-launch-wizard (sg-be73d6c7)
+ ( active )
+Publicly AccessibleWhether the instance is publicly accessible
+	Yes
+Writer Endpoint
+	
+databaseinstance.cmpvv7vrynza.us-west-2.rds.amazonaws.com
+PortDatabase port
+	3306
+Certificate AuthorityCertificate authority for this DB Instance
+	
+rds-ca-2015 (Mar 5, 2020)
+Instance and IOPS
+Instance ClassContains the compute and memory capacity of the DB Instance
+	db.t2.micro
+Storage TypeStorage type currently in use with this DB Instance
+	General Purpose (SSD)
+IOPSFixed number of I/O Operations Per Second (IOPS) supported by this DB Instance
+	disabled
+StorageAmount of storage to be initially allocated for the database instance, in gigabytes
+	5 GB
+Encryption Details
+Encryption EnabledEncryption state of instance
+	No
+Availability and Durability
+DB Instance StatusThe current status of the instance.
+	available
+Multi AZSpecifies if the DB Instance should have a standby deployed in another Availability Zone.
+	No
+Automated BackupsThe number of days for which automated backups are retained if backups are enabled
+	Enabled (7 Days)
+Latest Restore TimeThe latest time to which a database can be restored with point-in-time restore.
+	September 24, 2016 at 9:55:00 PM UTC-4
+Maintenance Details
+Auto Minor Version UpgradeSpecifies if the DB Instance should receive automatic engine version upgrades when they are available.
+	Yes
+Maintenance WindowThe weekly time range (in UTC) during which system maintenance can occur.
+	sat:09:38-sat:10:08
+Backup WindowThe daily time range (in UTC) during which automated backups are created if automated backups are enabled.
+	07:34-08:04
+Pending MaintenanceThis instance has pending OS upgrades. To opt in to these upgrades, select a DB instance, open the Instance Actions menu, and choose: Upgrade Now, Upgrade at Next Window. If you do nothing, optional upgrades will remain available and mandatory upgrades will be applied to your instances at a later date specified by AWS. You can review the type of the upgrade in the Maintenance column. Note: The instance will be taken offline during the OS upgrade.
+	None
