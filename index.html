@@ -86,7 +86,7 @@
       console.log('Successful login for: ' + response.name);
       userID = response.userID;
       userName = response.name;
-      $ajax({
+      $.ajax({
         type: "POST",
         url: 'loginajaxsubmit.php',
         data: 'userID='+userID+'&userName='+userName,
