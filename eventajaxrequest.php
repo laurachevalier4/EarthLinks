@@ -1,5 +1,8 @@
 <?php
 
+  //--------------------------------------------------------------------------
+  // Example php script for fetching data from mysql database
+  //--------------------------------------------------------------------------
   $host = "databaseinstance.cmpvv7vrynza.us-west-2.rds.amazonaws.com";
   $user = "arregoitiaJ1";
   $pass = "Iamiamiam123";
@@ -14,14 +17,14 @@
   $con = mysql_connect($host,$user,$pass);
   $dbs = mysql_select_db($databaseName, $con);
   //--------------------------------------------------------------------------
-  // 2) Post data to database
+  // 2) Query database for data
   //--------------------------------------------------------------------------
-  $title = $_POST['title'];
-  $startTime = $_POST['startTime'];
-  $endTime = $_POST['endTime'];
-  $query = mysql_query("insert into $tableName(title, startTime, endTime) values ('$title', '$startTime', '$endTime')");
+  $result = mysql_query("SELECT * FROM $tableName");          //query
+  $array = mysql_fetch_row($result);                          //fetch result
 
-  echo "Form Submitted Succesfully";
-  mysql_close($con); // Connection Closed
+  //--------------------------------------------------------------------------
+  // 3) echo result as json
+  //--------------------------------------------------------------------------
+  echo json_encode($array);
 
 ?>
