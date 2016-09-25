@@ -6,6 +6,7 @@
 </head>
 <body>
   <script>
+  var userID;
   window.fbAsyncInit = function() {
     FB.init({
       appId      : '307079902999566',
@@ -83,7 +84,8 @@
     console.log('Welcome!  Fetching your information.... ');
     FB.api('/me', function(response) {
       console.log('Successful login for: ' + response.name);
-      window.location.replace("/" + response.userID);
+      userID = response.userID;
+      window.location.replace("/" + userID);
       document.getElementById('status').innerHTML =
         'Thanks for logging in, ' + response.name + '!';
     });

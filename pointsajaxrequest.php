@@ -8,7 +8,7 @@
   $pass = "Iamiamiam123";
 
   $databaseName = "earthlinks";
-  $tableName = "Events";
+  $tableName = "Users";
 
   //--------------------------------------------------------------------------
   // 1) Connect to mysql database
@@ -19,8 +19,8 @@
   //--------------------------------------------------------------------------
   // 2) Query database for data
   //--------------------------------------------------------------------------
-  $zipcode = mysql_escape_string($_GET['ZipCode']);
-  $result = mysql_query("SELECT * FROM $tableName WHERE ZipCode = $zipcode");          //query
+  $userid = mysql_escape_string($_GET['userid']);
+  $result = mysql_query("SELECT Points FROM $tableName WHERE ID = '".intval($userid)."'");          //query
   $array = mysql_fetch_row($result);                          //fetch result
 
   //--------------------------------------------------------------------------
