@@ -19,7 +19,7 @@
   $title = $_POST['title'];
   $startTime = $_POST['startTime'];
   $endTime = $_POST['endTime'];
-  $query = mysql_query("insert into $tableName(title, startTime, endTime) values ('$title', '$startTime', '$endTime')");
+  $query = mysql_query("insert into $tableName(Name, StartTime, EndTime) values ('$title', '$startTime', '$endTime')");
 
   echo "Form Submitted Succesfully";
   mysql_close($con); // Connection Closed
