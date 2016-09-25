@@ -85,6 +85,15 @@
     FB.api('/me', function(response) {
       console.log('Successful login for: ' + response.name);
       userID = response.userID;
+      userName = response.name;
+      $ajax({
+        type: "POST",
+        url: 'loginajaxsubmit.php',
+        data: 'userID='+userID+'&userName='+userName,
+        success: function(result) {
+          console.log(result);
+        }
+      });
       window.location.replace("/mainPage.html");
       document.getElementById('status').innerHTML =
         'Thanks for logging in, ' + response.name + '!';
