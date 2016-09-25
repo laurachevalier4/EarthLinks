@@ -93,18 +93,7 @@
             allDaySlot: false,
             selectHelper: true,
             select: function(start, end, allDay) {
-                var title = prompt('Event Title:');
-                if (title) {
-                    calendar.fullCalendar('renderEvent',
-                        {
-                            title: title,
-                            start: start,
-                            end: end,
-                            allDay: allDay
-                        },
-                        true // make the event "stick"
-                    );
-                }
+                $('#myModal').modal('show');
                 calendar.fullCalendar('unselect');
             },
             droppable: true, // this allows things to be dropped onto the calendar !!!
@@ -203,7 +192,27 @@
     </head>
 
     <body data-spy="scroll" data-target=".navbar" data-offset="50">
-        
+        <div class="alert alert-success alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <strong>Great!</strong> You've redeemed the gift card.
+</div>
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Soul Kitchen</h4>
+      </div>
+      <div class="modal-body">
+        <h4>Date: Sun Setpember 25th, 2016</h4>
+        <h4>TIme: 10:30am</h4>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
         <div id="pageWrapper">
         <nav class="navbar navbar-default">
           <div class="container-fluid">
@@ -259,7 +268,7 @@
                     <hr>
                     <p class="re-info text-center"><span class="minus1">500</span> points needed</p>
                     <div class="re-footer text-center">
-                        <button class="btn btn-danger btn-reward get1">Get</button>
+                        <button class="btn btn-danger btn-reward get1" role="alert">Get</button>
                     </div>
                 </div>
                 <div class="col-md-3 col-md-push-4 rewards">
@@ -267,7 +276,7 @@
                     <hr>
                     <p class="re-info text-center"><span class="minus2">1000</span> points needed</p>
                     <div class="re-footer text-center">
-                        <button class="btn btn-danger btn-reward get2">Get</button>
+                        <button class="btn btn-danger btn-reward get2" >Get</button>
                     </div>
                 </div>
             </div>
@@ -294,16 +303,16 @@
         var ftNumAnim = new CountUp("count-pt", 0, 1200, 0, 3);
         ftNumAnim.start();
 
-        $('.get1').click(function () {
+        $('button .get1').click(function () {
             var points = $('#count-pt').val();
-            points -= $('minus1').val()
-            $('#count-pt').val(points);
+            points -= $('.minus1').val()
+            $('#count-pt').val(points + "");
         })
 
         $('.get2').click(function () {
             var points = $('#count-pt').val();
             points -= $('minus2').val()
-            $('#count-pt').val(points);
+            $('#count-pt').val(points + "");
         })
     })
 </script>
