@@ -9,7 +9,7 @@
         <title>Earthlinks</title>
         <!--Bootstrap and JQuery CDN's-->
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <!--Internal CSS JS files-->
         <link href="style.css" rel="stylesheet">
         <script src="script.js"></script>
@@ -23,12 +23,27 @@
         <script type="text/javascript" src="moment.js"></script>
         <script src='fullcalendar.js'></script>
         
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         
         <script type="text/javascript">
             $(document).ready(function () {
-                $('#external-events div.external-event').each(function() {
+                var date = new Date();
+        var d = date.getDate();
+        var m = date.getMonth();
+        var y = date.getFullYear();
+        
+        /*  className colors
+        
+        className: default(transparent), important(red), chill(pink), success(green), info(blue)
+        
+        */      
+        
+          
+        /* initialize the external events
+        -----------------------------------------------------------------*/
+    
+        $('#external-events div.external-event').each(function() {
         
             // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
             // it doesn't need to have a start or end
@@ -47,8 +62,12 @@
             });
             
         });
-
-            var calendar =  $('#calendar').fullCalendar({
+    
+    
+        /* initialize the calendar
+        -----------------------------------------------------------------*/
+        
+        var calendar =  $('#calendar').fullCalendar({
             header: {
                 left: 'title',
                 center: 'agendaDay,agendaWeek,month',
@@ -72,9 +91,21 @@
                 day: 'MMMM yyyy'                  // Tuesday, Sep 8, 2009
             },
             allDaySlot: false,
-            selectHelper: false,
+            selectHelper: true,
             select: function(start, end, allDay) {
-                
+                var title = prompt('Event Title:');
+                if (title) {
+                    calendar.fullCalendar('renderEvent',
+                        {
+                            title: title,
+                            start: start,
+                            end: end,
+                            allDay: allDay
+                        },
+                        true // make the event "stick"
+                    );
+                }
+                calendar.fullCalendar('unselect');
             },
             droppable: true, // this allows things to be dropped onto the calendar !!!
             drop: function(date, allDay) { // this function is called when something is dropped
@@ -104,8 +135,7 @@
             events: [
                 {
                     title: 'All Day Event',
-                    start: start,
-                    allDay: false
+                    start: new Date(y, m, 1)
                 },
                 {
                     id: 999,
@@ -149,10 +179,14 @@
                 }
             ],          
         });
+        
+        
+    });
+
         </script>
         <style type="text/css">
             #wrap {
-        width: 1100px;
+        width: 100vw;
         margin: 0 auto;
         }
         
@@ -191,10 +225,9 @@
 
     #calendar {
 /*      float: right; */
-        margin: 0 auto;
         width: 900px;
         background-color: #FFFFFF;
-          border-radius: 6px;
+        border-radius: 6px;
         box-shadow: 0 1px 2px #C3C3C3;
         }
         </style>
@@ -239,7 +272,7 @@
             </div>
         </div>
             
-        <div id="calendar" class="container-fluid">
+        <div id="calendar2" class="container-fluid">
             <div id='wrap'>
 
             <div id='calendar'></div>
