@@ -134,48 +134,17 @@
             
             events: [
                 {
-                    title: 'All Day Event',
-                    start: new Date(y, m, 1)
-                },
-                {
-                    id: 999,
-                    title: 'Repeating Event',
-                    start: new Date(y, m, d-3, 16, 0),
-                    allDay: false,
-                    className: 'info'
-                },
-                {
-                    id: 999,
-                    title: 'Repeating Event',
-                    start: new Date(y, m, d+4, 16, 0),
-                    allDay: false,
-                    className: 'info'
-                },
-                {
-                    title: 'Meeting',
+                    title: 'Soup Kitchen',
                     start: new Date(y, m, d, 10, 30),
                     allDay: false,
                     className: 'important'
                 },
                 {
-                    title: 'Lunch',
-                    start: new Date(y, m, d, 12, 0),
-                    end: new Date(y, m, d, 14, 0),
+                    title: 'Habitat for Humanity Build',
+                    start: new Date(y, m, d + 2, 12, 0),
+                    end: new Date(y, m, d + 2, 14, 0),
                     allDay: false,
                     className: 'important'
-                },
-                {
-                    title: 'Birthday Party',
-                    start: new Date(y, m, d+1, 19, 0),
-                    end: new Date(y, m, d+1, 22, 30),
-                    allDay: false,
-                },
-                {
-                    title: 'Click for Google',
-                    start: new Date(y, m, 28),
-                    end: new Date(y, m, 29),
-                    url: 'http://google.com/',
-                    className: 'success'
                 }
             ],          
         });
@@ -252,13 +221,13 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav navbar-left">
-                <li class="active"><a href="#">Account <span class="sr-only">(current)</span></a></li>
+                <li><a href="#account">Account <span class="sr-only">(current)</span></a></li>
                 <li><a href="#">Calendar</a></li>
               </ul>
                <a class="navbar-brand" href="#"><img src="earth.png"></a>
               <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Rewards</a></li>
-                <li><a href="#">Redeem</a></li>
+                <li><a href="#rewards">Rewards</a></li>
+                <li><a href="#redeem">Redeem</a></li>
               </ul>
             </div><!-- /.navbar-collapse -->
           </div><!-- /.container-fluid -->
@@ -268,7 +237,7 @@
                 <img src="profile.jpg" class="img-circle pr-circle"> 
             </div>
             <div id="pointCircle" class="circle">
-                <div><p class="pointValue">1200 <br>points</p></div>
+                <div><p id="count-pt" class="pointValue">1200</p></div>
             </div>
         </div>
             
@@ -283,24 +252,61 @@
         </div>
             
         <div id="rewards" class="container-fluid">
-            <h1>Rewards</h1>
-  
+            <h1 class="text-center">Rewards</h1>
+            <div class="row container">
+                <div class="col-md-3 col-md-push-3 rewards">
+                    <h2 class="re-header text-center">$5 @ H & M</h2>
+                    <hr>
+                    <p class="re-info text-center"><span class="minus1">500</span> points needed</p>
+                    <div class="re-footer text-center">
+                        <button class="btn btn-danger btn-reward get1">Get</button>
+                    </div>
+                </div>
+                <div class="col-md-3 col-md-push-4 rewards">
+                    <h2 class="re-header text-center">$10 @ Xbox</h2>
+                    <hr>
+                    <p class="re-info text-center"><span class="minus2">1000</span> points needed</p>
+                    <div class="re-footer text-center">
+                        <button class="btn btn-danger btn-reward get2">Get</button>
+                    </div>
+                </div>
+            </div>
+                
         </div>
 
-        <div id="achievements" class="container-fluid">
-            <h1>Achievements</h1>
-            
-        </div>      
-     
         <div id="redeem" class="container-fluid">
-            <h1>Redeem</h1>
-            
-        </div>     
-            
-            
+            <h1 class="text-center">Redeem</h1>
+            <div class="row container">
+                <div class="col-md-6 col-md-push-3">
+                    <div class="form-inline">
+                        <input type="text" id="whatever" name="redeemcode" placeholder="Enter Code">
+                        <button type="submit" class="btn btn-danger submitCode">Redeem</button>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
         </div>
 
+<script type="text/javascript" src="countUp.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var ftNumAnim = new CountUp("count-pt", 0, 1200, 0, 3);
+        ftNumAnim.start();
 
+        $('.get1').click(function () {
+            var points = $('#count-pt').val();
+            points -= $('minus1').val()
+            $('#count-pt').val(points);
+        })
+
+        $('.get2').click(function () {
+            var points = $('#count-pt').val();
+            points -= $('minus2').val()
+            $('#count-pt').val(points);
+        })
+    })
+</script>
         <!-- Smooth Scroll -->
   <script>
     $(document).ready(function(){

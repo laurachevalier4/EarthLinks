@@ -4,9 +4,9 @@
 
 #account {padding-top:100px;height:100vh;color: #fff; background-color: #1E88E5;}
 #calendar2 {padding:100px 20rem;color: #fff; background-color: #105189;}
-#rewards {padding-top:100px;height:100vh;color: #fff; background-color: #00b33c;}
-#achievements {padding-top:100px;height:100vh;color: #fff; background-color: #00802b;}
-#redeem {padding-top:100px;height:100vh;color: #fff; background-color: #fff;}
+#rewards {padding:5rem;color: #fff; background-color: #00b33c;}
+#redeem {padding-top:100px;height:100vh;color: #fff; background-color: #00802b;}
+/*#redeem {padding-top:100px;height:100vh;color: #fff; background-color: #fff;}*/
 
 nav {
     margin-bottom: 0
@@ -19,7 +19,22 @@ nav {
     margin-left: 34rem;
 }
 .navbar-right {
-    margin-right: 31rem;
+    margin-right: 27rem;
+}
+.navbar li {
+    background-color: #ff554d;
+    border-radius: 2px;
+    margin: 1rem;
+}
+.navbar li:hover {
+    position: relative;
+    top: -2px;
+    box-shadow: -2px 4px 0px 1px #cccccc;
+}
+.navbar-default .navbar-nav>li>a, .navbar-default .navbar-nav>li>a:hover {
+    color: white;
+    padding: 10px;
+    text-transform: lowercase;
 }
 .navbar-brand img {
     width: 21rem;
@@ -61,11 +76,13 @@ nav {
 
 .pointValue {
     position: absolute;
-    top: 26%;
-    left: 30%;
-    font-size: 5rem;
+    top: 23%;
+    left: 23%;
+    font-size: 8rem;
 }
-
+.pointValue:after {
+    content: ' points'
+}
 .pr-circle {
     width: 30rem;
     height: 30rem;
@@ -75,4 +92,30 @@ nav {
     position: absolute;
     left: 32rem;
     top: 26rem;
+}
+
+.rewards {
+    border: 2px solid #f2f2f2;
+    border-radius: 2px;
+
+}
+#rewards h1 {
+    margin: 3rem 0;
+}
+.re-header {
+    font-size: 3.5rem;
+}
+.re-info {
+    font-size: 2.5rem;
+}
+.re-footer {
+    padding: 2rem 0;  
+}
+
+.btn-reward {    
+    padding: 1rem 2rem;
+    letter-spacing: 7px;
+}
+#whatever {
+    width: 60%;
 }
