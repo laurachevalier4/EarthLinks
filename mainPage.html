@@ -1,0 +1,125 @@
+<!--Index page, CSS and JS seperately-->
+
+<!DOCTYPE html>
+<html lang="eng">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="Description" content="Earthlinks" author="Jorge Arregoitia: Laura Chevalier: David Churchill">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Earthlinks</title>
+        
+        <!--Internal CSS JS files-->
+        <link href="style.css" rel="stylesheet">
+        <script src="script.js"></script>
+        <link href="index.html" rel="html">
+        
+        <!--Bootstrap and JQuery CDN's-->
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        
+    </head>
+
+    <body data-spy="scroll" data-target=".navbar" data-offset="50">
+        
+        <script>
+        var userID;
+        window.fbAsyncInit = function() {
+            FB.init({
+                appId      : '307079902999566',
+                xfbml      : true,
+                version    : 'v2.7'
+            });
+        };
+        (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+        // This is called with the results from from FB.getLoginStatus().
+
+        // Here we run a very simple test of the Graph API after login is
+        // successful.  See statusChangeCallback() for when this call is made.
+        function testAPI() {
+            console.log('Welcome!  Fetching your information.... ');
+            FB.api('/me', function(response) {
+            console.log('Successful login for: ' + response.name);
+            userID = response.userID;
+            window.onload = function() {
+            document.getElementById("pointValue").innerHTML = userID;
+            }     
+            $(function() {
+                $.ajax({
+                    url: "request.php",
+                    data: userID,
+                    dataType: "json",
+                    success: function(data) {
+                        var points = data[0];
+                        $('#pointValue').append(points);
+                        }
+                    });    
+                });
+            });
+        }
+        
+        </script>
+        <div id="pageWrapper">
+            <nav id="navBar" class="navbar navbar-inverse navbar-fixed-top">
+                
+                <a href="#account"><img id="mainLogo" src="earth.png" href="#account"></a>
+                
+                <div id="buttonConatiner">
+                    <div id="logOut">
+                        <a id="logOutOption" href="#">Log Out</a>
+                    </div>
+                    <div id="buttonMenu">
+                        <div id="myNavbar" class="navbar-inner">
+                            <div id="btnGroup" class="btn-group btn-group-justified">
+                                <a id="btnAccount" href="#account" class="btn btn-primary">Account</a>
+                                <a id="btnCalendar" href="#calendar" class="btn btn-primary">Calendar</a>
+                                <a id="btnRewards" href="#rewards" class="btn btn-primary">Rewards</a>
+                                <a id="btnAchievements" href="#achievements" class="btn btn-primary">Achievements</a>  
+                                <a id="btnRedeem" href="#redeem" class="btn btn-primary">Redeem</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </nav>    
+
+        <div id="account" class="container-fluid">
+            <div id="pointCircle" class="circle">
+                <div id="pointValue"></div>
+            </div>
+        </div>
+            
+        <div id="calendar" class="container-fluid">
+            
+  
+        </div>
+            
+        <div id="rewards" class="container-fluid">
+            <h1>Rewards</h1>
+  
+        </div>
+
+        <div id="achievements" class="container-fluid">
+            <h1>Achievements</h1>
+            
+        </div>      
+     
+        <div id="redeem" class="container-fluid">
+            <h1>Redeem</h1>
+            
+        </div>     
+            
+            
+        </div>
+    </body>
+
+
+
+
+</html>
